@@ -321,6 +321,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1432427824 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6017945414186275296, guid: 7e1eca019f7c8a840b1116ca886e4295, type: 3}
+  m_PrefabInstance: {fileID: 5227070849320445085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1768342837 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5287917154444571053, guid: 7e1eca019f7c8a840b1116ca886e4295, type: 3}
@@ -339,6 +344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
+  Gravity: -9.81
+  JumpHeight: 1.5
 --- !u!114 &1768342839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +358,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157743a35bddcfb4a9d9a52ee7a870df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1768342844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768342837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be65c82cc2dbb0479dac38b063532aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 1432427824}
+  XSensitivity: 30
+  YSensitivity: 30
 --- !u!1001 &5227070849320445085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -413,6 +435,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5287917154444571053, guid: 7e1eca019f7c8a840b1116ca886e4295, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1768342838}
+    - targetCorrespondingSourceObject: {fileID: 5287917154444571053, guid: 7e1eca019f7c8a840b1116ca886e4295, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1768342844}
   m_SourcePrefab: {fileID: 100100000, guid: 7e1eca019f7c8a840b1116ca886e4295, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
