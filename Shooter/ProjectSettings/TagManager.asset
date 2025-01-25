@@ -4,6 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Stair
+  - WallRun
+  - Climb
+  - Fly
   - Enemy
   - FirePoint
   - Critical
@@ -11,6 +15,8 @@ TagManager:
   - Ramp
   - BodyShot
   - Ladder
+  - Animal
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -32,6 +38,7 @@ TagManager:
   - Player
   - 
   - 
+  - Animal
   - 
   - 
   - 
@@ -41,8 +48,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Item
   - 
   m_SortingLayers:
   - name: Default
