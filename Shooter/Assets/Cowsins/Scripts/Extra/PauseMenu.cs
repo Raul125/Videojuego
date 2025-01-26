@@ -102,6 +102,11 @@ namespace cowsins
             Application.Quit();
         }
 
+        public void RestartLevel()
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+
         public void TogglePause()
         {
             isPaused = !isPaused;

@@ -2642,6 +2642,7 @@ MonoBehaviour:
   - {fileID: 1145229506}
   clickSFX: {fileID: 8300000, guid: f0827c5b4470d834d956b66b0063183b, type: 3}
   sceneIndex: 0
+  levelRequired: 0
 --- !u!222 &201454701
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4322,6 +4323,7 @@ MonoBehaviour:
   - {fileID: 1312945917}
   clickSFX: {fileID: 8300000, guid: f0827c5b4470d834d956b66b0063183b, type: 3}
   sceneIndex: 0
+  levelRequired: 0
 --- !u!1 &319752225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4465,6 +4467,7 @@ MonoBehaviour:
   gameObjectsToDisable: []
   clickSFX: {fileID: 8300000, guid: f0827c5b4470d834d956b66b0063183b, type: 3}
   sceneIndex: 1
+  levelRequired: 0
 --- !u!222 &319752230
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5027,6 +5030,7 @@ MonoBehaviour:
   gameObjectsToDisable: []
   clickSFX: {fileID: 8300000, guid: f0827c5b4470d834d956b66b0063183b, type: 3}
   sceneIndex: 0
+  levelRequired: 0
 --- !u!114 &386907102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9946,11 +9950,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  buttonType: 1
+  buttonType: 3
   gameObjectToEnable: {fileID: 0}
   gameObjectsToDisable: []
   clickSFX: {fileID: 8300000, guid: f0827c5b4470d834d956b66b0063183b, type: 3}
-  sceneIndex: 2
+  sceneIndex: 1
+  levelRequired: 2
 --- !u!222 &793833644
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12241,6 +12246,7 @@ MonoBehaviour:
   - {fileID: 757710077}
   clickSFX: {fileID: 8300000, guid: f0827c5b4470d834d956b66b0063183b, type: 3}
   sceneIndex: 0
+  levelRequired: 0
 --- !u!222 &1006904555
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19646,6 +19652,7 @@ MonoBehaviour:
   - {fileID: 1145229506}
   clickSFX: {fileID: 8300000, guid: f0827c5b4470d834d956b66b0063183b, type: 3}
   sceneIndex: 0
+  levelRequired: 0
 --- !u!222 &1776711286
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21229,6 +21236,7 @@ MonoBehaviour:
   - {fileID: 1157869444}
   clickSFX: {fileID: 8300000, guid: f0827c5b4470d834d956b66b0063183b, type: 3}
   sceneIndex: 0
+  levelRequired: 0
 --- !u!222 &1890421788
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24265,6 +24273,7 @@ MonoBehaviour:
   - {fileID: 1788192407}
   clickSFX: {fileID: 8300000, guid: f0827c5b4470d834d956b66b0063183b, type: 3}
   sceneIndex: 0
+  levelRequired: 0
 --- !u!222 &2128172251
 CanvasRenderer:
   m_ObjectHideFlags: 0

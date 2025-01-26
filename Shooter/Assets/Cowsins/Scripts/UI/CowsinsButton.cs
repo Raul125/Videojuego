@@ -15,7 +15,8 @@ namespace cowsins
         {
             GameObjectTransition,
             SceneTransition,
-            Other
+            Other,
+            LevelButton
         }
 
         [SerializeField, Tooltip("Select the behaviour of the button.")] ButtonType buttonType;
@@ -23,6 +24,7 @@ namespace cowsins
         [SerializeField, Tooltip("GameObjects to disable. No fade effect is played on these.")] private GameObject[] gameObjectsToDisable;
         [SerializeField, Tooltip("")] private AudioClip clickSFX;
         [SerializeField, Tooltip("")] private int sceneIndex;
+        [SerializeField, Tooltip("")] private int levelRequired;
 
         // Button Type Getter
         public ButtonType _ButtonType => buttonType;
@@ -59,6 +61,13 @@ namespace cowsins
             {
                 MainMenuManager.Instance?.LoadScene(sceneIndex); // Load A new Scene (Async)
             }
+            else if (buttonType == ButtonType.LevelButton) // Handle Scene Transitions
+            {
+                var playerProgress = new PlayerProgress();
+                int lastLevel = playerProgress.LoadProgress();
+                if (lastLevel >= levelRequired)
+                    MainMenuManager.Instance?.LoadScene(sceneIndex); // Load A new Scene (Async)
+            }
         }
 
     }
@@ -82,6 +91,11 @@ namespace cowsins
             else if (myScript._ButtonType == CowsinsButton.ButtonType.SceneTransition)
             {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("sceneIndex"));
+            }
+            else if (myScript._ButtonType == CowsinsButton.ButtonType.LevelButton)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("sceneIndex"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("levelRequired"));
             }
             
             EditorGUILayout.Space(10);
