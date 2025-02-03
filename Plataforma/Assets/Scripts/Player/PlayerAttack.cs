@@ -5,13 +5,16 @@ public class PlayerAttack : MonoBehaviour
     private PlayerMovement playerMovement;
     private Animator animator;
 
-    private int currentAttack = 0;
-    private float timeSinceAttack = 0.0f;
+    private int currentAttack;
+    private float timeSinceAttack;
 
     [Header("Attack Settings")]
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public int attackDamage = 10;
+    [SerializeField] private float range;
+    [SerializeField] private int damage;
+
+    [Header("Collider Settings")]
+    [SerializeField] private float colliderDistance;
+    [SerializeField] private BoxCollider2D boxCollider;
     public LayerMask enemyLayer;
 
     private void Awake()
@@ -53,11 +56,25 @@ public class PlayerAttack : MonoBehaviour
 
     private void DealDamage()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
-        foreach (Collider2D enemy in hitEnemies)
+        RaycastHit2D[] hits =
+            Physics2D.BoxCastAll(boxCollider.bounds.center + (transform.right * range * playerMovement.FacingDirection * colliderDistance),
+            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
+            0, Vector2.left, 0, enemyLayer);
+
+        foreach (RaycastHit2D enemy in hits)
         {
-            // Deal Damage
+            if (enemy.collider.TryGetComponent(out Health healthComponent))
+            {
+                healthComponent.TakeDamage(damage);
+            }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(boxCollider.bounds.center + (transform.right * range * playerMovement.FacingDirection * colliderDistance),
+            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
 
 

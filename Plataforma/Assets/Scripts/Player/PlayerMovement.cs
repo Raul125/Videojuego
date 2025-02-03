@@ -3,10 +3,10 @@
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] float speed = 4.0f;
-    [SerializeField] float jumpForce = 7.5f;
-    [SerializeField] float rollForce = 6.0f;
-    [SerializeField] GameObject slideDust;
+    [SerializeField] private float speed = 4.0f;
+    [SerializeField] private float jumpForce = 7.5f;
+    [SerializeField] private float rollForce = 6.0f;
+    [SerializeField] private GameObject slideDust;
 
     private Animator animator;
     private Rigidbody2D body2d;
@@ -22,13 +22,13 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded = false;
     public bool Rolling = false;
 
-    private int facingDirection = 1;
-    
+    public int FacingDirection { get; private set; } = 1;
+
     private float delayToIdle = 0.0f;
     private float rollCurrentTime = 0f;
     private readonly float rollDuration = 8.0f / 14.0f;
 
-    void Awake()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         body2d = GetComponent<Rigidbody2D>();
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<CollideSensor>();
     }
 
-    void Update()
+    private void Update()
     {
         UpdateTimers();
         CheckGroundStatus();
@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         if (inputX != 0)
         {
             spriteRenderer.flipX = inputX < 0;
-            facingDirection = inputX < 0 ? -1 : 1;
+            FacingDirection = inputX < 0 ? -1 : 1;
         }
 
         if (!Rolling)
@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Rolling = true;
         animator.SetTrigger("Roll");
-        body2d.velocity = new Vector2(facingDirection * rollForce, body2d.velocity.y);
+        body2d.velocity = new Vector2(FacingDirection * rollForce, body2d.velocity.y);
     }
 
     private void Jump()
@@ -151,13 +151,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void AE_SlideDust()
+    private void AE_SlideDust()
     {
-        Vector3 spawnPosition = facingDirection == 1 ? wallSensorR2.transform.position : wallSensorL2.transform.position;
+        Vector3 spawnPosition = FacingDirection == 1 ? wallSensorR2.transform.position : wallSensorL2.transform.position;
         if (slideDust != null)
         {
             GameObject dust = Instantiate(slideDust, spawnPosition, transform.localRotation);
-            dust.transform.localScale = new Vector3(facingDirection, 1, 1);
+            dust.transform.localScale = new Vector3(FacingDirection, 1, 1);
         }
     }
 }

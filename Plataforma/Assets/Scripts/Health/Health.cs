@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -45,8 +44,26 @@ public class Health : MonoBehaviour
         {
             animator.SetBool("noBlood", false);
             animator.SetTrigger("Death");
-            GetComponent<PlayerMovement>().enabled = false;
-            GetComponent<PlayerAttack>().enabled = false;
+            if (TryGetComponent(out PlayerMovement playerMovement))
+            {
+                playerMovement.enabled = false;
+            }
+
+            if (TryGetComponent(out PlayerAttack playerAttack))
+            {
+                playerAttack.enabled = false;
+            }
+
+            if (TryGetComponent(out WizardEnemy wizardEnemy))
+            {
+                wizardEnemy.enabled = false;
+            }
+
+            if (GetComponentInParent<EnemyPatrol>() != null)
+            {
+                GetComponentInParent<EnemyPatrol>().enabled = false;
+            }
+
             isDead = true;
         }
     }
