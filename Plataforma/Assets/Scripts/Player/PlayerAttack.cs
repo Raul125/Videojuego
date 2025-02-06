@@ -17,6 +17,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private BoxCollider2D boxCollider;
     public LayerMask enemyLayer;
 
+    public bool Blocking { get; private set; }
+
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -70,16 +72,17 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(boxCollider.bounds.center + (transform.right * range * playerMovement.FacingDirection * colliderDistance),
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
-    }
+    }*/
 
 
     private void StartBlocking()
     {
+        Blocking = true;
         animator.SetTrigger("Block");
         animator.SetBool("IdleBlock", true);
     }
@@ -87,5 +90,6 @@ public class PlayerAttack : MonoBehaviour
     private void StopBlocking()
     {
         animator.SetBool("IdleBlock", false);
+        Blocking = false;
     }
 }

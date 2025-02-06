@@ -8,6 +8,11 @@ public class EnemyDamage : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (collision.TryGetComponent(out PlayerAttack playerAttack) && playerAttack.Blocking)
+            {
+                return;
+            }
+
             collision.GetComponent<Health>().TakeDamage(damage);
         }
     }

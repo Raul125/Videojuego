@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private Rigidbody2D body2d;
     private SpriteRenderer spriteRenderer;
+    private PlayerAttack playerAttack;
+    private BoxCollider2D boxCollider;
 
     private CollideSensor groundSensor;
     private CollideSensor wallSensorR1;
@@ -33,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         body2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerAttack = GetComponent<PlayerAttack>();
+        boxCollider = GetComponent<BoxCollider2D>();
 
         groundSensor = transform.Find("GroundSensor").GetComponent<CollideSensor>();
         wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<CollideSensor>();
@@ -81,6 +85,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (playerAttack.Blocking)
+        {
+            return;
+        }
+
         float inputX = Input.GetAxis("Horizontal");
         if (inputX != 0)
         {

@@ -11,6 +11,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float iFrameDuration;
     [SerializeField] private float numerOfFlashes;
 
+    [Header("Components")]
+    [SerializeField] private Behaviour[] components;
+
     private SpriteRenderer spriteRenderer;
 
     private Animator animator;
@@ -44,24 +47,11 @@ public class Health : MonoBehaviour
         {
             animator.SetBool("noBlood", false);
             animator.SetTrigger("Death");
-            if (TryGetComponent(out PlayerMovement playerMovement))
-            {
-                playerMovement.enabled = false;
-            }
 
-            if (TryGetComponent(out PlayerAttack playerAttack))
-            {
-                playerAttack.enabled = false;
-            }
 
-            if (TryGetComponent(out WizardEnemy wizardEnemy))
+            foreach (Behaviour component in components)
             {
-                wizardEnemy.enabled = false;
-            }
-
-            if (GetComponentInParent<EnemyPatrol>() != null)
-            {
-                GetComponentInParent<EnemyPatrol>().enabled = false;
+                component.enabled = false;
             }
 
             isDead = true;

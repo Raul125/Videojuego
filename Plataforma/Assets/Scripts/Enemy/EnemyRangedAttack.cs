@@ -1,11 +1,15 @@
 using UnityEngine;
 
-public class WizardEnemy : MonoBehaviour
+public class EnemyRangedAttack : MonoBehaviour
 {
     [Header("Attack Settings")]
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
     [SerializeField] private int damage;
+
+    [Header("Ranged Settings")]
+    [SerializeField] private Transform firepoint;
+    [SerializeField] private GameObject[] fireballs;
 
     [Header("Collider Settings")]
     [SerializeField] private float colliderDistance;
@@ -17,8 +21,6 @@ public class WizardEnemy : MonoBehaviour
     private float cooldownTimer = Mathf.Infinity;
 
     private Animator animator;
-    private Health playerHealth;
-
     private EnemyPatrol enemyPatrol;
 
     private void Awake()
@@ -51,26 +53,34 @@ public class WizardEnemy : MonoBehaviour
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
             0, Vector2.left, 0, playerLayer);
 
-        if (hit.collider != null)
-        {
-            playerHealth = hit.transform.GetComponent<Health>();
-        }
-
         return hit.collider != null;
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(boxCollider.bounds.center + (transform.right * range * transform.localScale.x * colliderDistance),
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
+    }*/
+
+    private void RangeAttack()
+    {
+        cooldownTimer = 0;
+        int fireball = FindFireball();
+        fireballs[fireball].transform.position = firepoint.position;
+        fireballs[fireball].GetComponent<EnemyProjectile>().ActivateProjectile();
     }
 
-    private void DamagePlayer()
+    private int FindFireball()
     {
-        if (PlayerInSight())
+        for (int i = 0; i < fireballs.Length; i++)
         {
-            playerHealth.TakeDamage(damage);
+            if (!fireballs[i].activeInHierarchy)
+            {
+                return i;
+            }
         }
+
+        return 0;
     }
 }
