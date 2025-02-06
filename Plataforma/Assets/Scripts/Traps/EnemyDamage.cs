@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] protected float damage;
+    [SerializeField] protected AudioClip blockedSound;
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
@@ -10,6 +11,7 @@ public class EnemyDamage : MonoBehaviour
         {
             if (collision.TryGetComponent(out PlayerAttack playerAttack) && playerAttack.Blocking)
             {
+                SoundManager.Instance.PlaySound(blockedSound);
                 return;
             }
 

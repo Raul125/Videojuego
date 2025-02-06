@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Behaviour[] components;
 
+    private bool invulnerable;
+
     private SpriteRenderer spriteRenderer;
 
     private Animator animator;
@@ -36,6 +38,11 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (invulnerable)
+        {
+            return;
+        }
+
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
 
         if (currentHealth > 0)
@@ -45,10 +52,7 @@ public class Health : MonoBehaviour
         }
         else if (!isDead)
         {
-            animator.SetBool("noBlood", false);
             animator.SetTrigger("Death");
-
-
             foreach (Behaviour component in components)
             {
                 component.enabled = false;
@@ -65,6 +69,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator Invulnerability()
     {
+        invulnerable = true;
         Physics2D.IgnoreLayerCollision(8, 9, true);
         for (int i = 0; i < numerOfFlashes; i++)
         {
@@ -75,5 +80,6 @@ public class Health : MonoBehaviour
         }
 
         Physics2D.IgnoreLayerCollision(8, 9, false);
+        invulnerable = false;
     }
 }

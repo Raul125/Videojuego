@@ -12,6 +12,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private int damage;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip attackSound;
+    [SerializeField] private AudioClip blockSound;
+
     [Header("Collider Settings")]
     [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
@@ -54,6 +58,7 @@ public class PlayerAttack : MonoBehaviour
         timeSinceAttack = 0.0f;
 
         DealDamage();
+        SoundManager.Instance.PlaySound(attackSound);
     }
 
     private void DealDamage()
@@ -85,6 +90,7 @@ public class PlayerAttack : MonoBehaviour
         Blocking = true;
         animator.SetTrigger("Block");
         animator.SetBool("IdleBlock", true);
+        SoundManager.Instance.PlaySound(blockSound);
     }
 
     private void StopBlocking()

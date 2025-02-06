@@ -172,5 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  blockedSound: {fileID: 8300000, guid: 11e4acb296951c64ab0f26893f70432d, type: 3}
   speed: 10
   resetTime: 5
