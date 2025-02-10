@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spikehead : EnemyDamage
@@ -9,8 +7,11 @@ public class Spikehead : EnemyDamage
     [SerializeField] private float range;
     [SerializeField] private float checkDelay;
     [SerializeField] private LayerMask playerLayer;
-   
-    private Vector3[] directions = new Vector3[4];
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip impactSound;
+
+    private readonly Vector3[] directions = new Vector3[4];
     private Vector3 destination;
 
     private float checkTimer;
@@ -68,8 +69,9 @@ public class Spikehead : EnemyDamage
         attacking = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private new void OnTriggerEnter2D(Collider2D collision)
     {
+        SoundManager.Instance.PlaySound(impactSound);
         base.OnTriggerEnter2D(collision);
         Stop();
     }

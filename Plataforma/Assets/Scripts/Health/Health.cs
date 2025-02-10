@@ -21,6 +21,10 @@ public class Health : MonoBehaviour
     private Animator animator;
     private bool isDead;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip dieSound;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -48,11 +52,20 @@ public class Health : MonoBehaviour
         if (currentHealth > 0)
         {
             animator.SetTrigger("Hurt");
+            if (hurtSound != null)
+            {
+                SoundManager.Instance.PlaySound(hurtSound);
+            }
             StartCoroutine(Invulnerability());
         }
         else if (!isDead)
         {
             animator.SetTrigger("Death");
+            if (dieSound != null)
+            {
+                SoundManager.Instance.PlaySound(dieSound);
+            }
+
             foreach (Behaviour component in components)
             {
                 component.enabled = false;
@@ -65,6 +78,20 @@ public class Health : MonoBehaviour
     public void Heal(float amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, startingHealth);
+    }
+
+    public void Respawn()
+    {
+        isDead = false;
+        Heal(startingHealth);
+        animator.ResetTrigger("Death");
+        animator.Play("Idle");
+        StartCoroutine(Invulnerability());
+
+        foreach (Behaviour component in components)
+        {
+            component.enabled = true;
+        }
     }
 
     private IEnumerator Invulnerability()

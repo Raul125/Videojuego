@@ -7,14 +7,20 @@ public class EnemyDamage : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Shield"))
         {
-            if (collision.TryGetComponent(out PlayerAttack playerAttack) && playerAttack.Blocking)
+            PlayerAttack playerAttack = collision.GetComponentInParent<PlayerAttack>();
+            if (playerAttack != null && playerAttack.Blocking)
             {
                 SoundManager.Instance.PlaySound(blockedSound);
-                return;
             }
-
+            else
+            {
+                collision.GetComponentInParent<Health>().TakeDamage(damage);
+            }
+        }
+        else if (collision.CompareTag("Player"))
+        {
             collision.GetComponent<Health>().TakeDamage(damage);
         }
     }

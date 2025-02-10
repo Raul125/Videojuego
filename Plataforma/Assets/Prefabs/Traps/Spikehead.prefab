@@ -172,9 +172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  blockedSound: {fileID: 0}
   speed: 0.5
   range: 16
   checkDelay: 3
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  impactSound: {fileID: 8300000, guid: 6e89f4c454d1a1049a0ab590e6f77621, type: 3}

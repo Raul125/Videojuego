@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 7.5f;
     [SerializeField] private float rollForce = 6.0f;
     [SerializeField] private GameObject slideDust;
+    [SerializeField] private GameObject shield;
+    [SerializeField] private AudioClip jumpSound;
 
     private Animator animator;
     private Rigidbody2D body2d;
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private CollideSensor wallSensorL2;
 
     private bool isWallSliding = false;
+    private bool isWallSlidingLeft;
+    private bool isWallSlidingRight;
     private bool grounded = false;
     public bool Rolling = false;
 
@@ -95,9 +99,13 @@ public class PlayerMovement : MonoBehaviour
         {
             spriteRenderer.flipX = inputX < 0;
             FacingDirection = inputX < 0 ? -1 : 1;
+
+            Vector3 shieldOffset = shield.transform.localPosition;
+            shieldOffset.x = FacingDirection * Mathf.Abs(shieldOffset.x);
+            shield.transform.localPosition = shieldOffset;
         }
 
-        if (!Rolling)
+        if (!Rolling && !(isWallSlidingLeft && inputX < 0) && !(isWallSlidingRight && inputX > 0))
         {
             body2d.velocity = new Vector2(inputX * speed, body2d.velocity.y);
         }
@@ -107,7 +115,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleWallSliding()
     {
-        isWallSliding = (wallSensorR1.State() && wallSensorR2.State()) || (wallSensorL1.State() && wallSensorL2.State());
+        isWallSlidingLeft = wallSensorL1.State() || wallSensorL2.State();
+        isWallSlidingRight = wallSensorR1.State() || wallSensorR2.State();
+        isWallSliding = isWallSlidingLeft || isWallSlidingRight;
         animator.SetBool("WallSlide", isWallSliding);
     }
 
@@ -131,11 +141,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Rolling = true;
         animator.SetTrigger("Roll");
+
         body2d.velocity = new Vector2(FacingDirection * rollForce, body2d.velocity.y);
     }
 
     private void Jump()
     {
+        SoundManager.Instance.PlaySound(jumpSound);
+
         animator.SetTrigger("Jump");
         grounded = false;
         animator.SetBool("Grounded", grounded);
