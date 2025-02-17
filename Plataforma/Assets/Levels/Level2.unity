@@ -13265,6 +13265,7 @@ Transform:
   - {fileID: 1624163735}
   - {fileID: 1880569710}
   - {fileID: 165169886}
+  - {fileID: 2116691421}
   - {fileID: 869411414}
   - {fileID: 1155569807}
   - {fileID: 1687825994}
@@ -14671,7 +14672,6 @@ Transform:
   - {fileID: 1779534090}
   - {fileID: 389575213}
   - {fileID: 1554022780}
-  - {fileID: 2116691421}
   - {fileID: 557964485}
   - {fileID: 1277590203}
   m_Father: {fileID: 762845329}
@@ -15491,11 +15491,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1950549185}
+    m_TransformParent: {fileID: 1776728734}
     m_Modifications:
     - target: {fileID: 4092362134281108231, guid: 80aaed688dc277c4da9dbd6d0242f482, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.7
+      value: 11.69
       objectReference: {fileID: 0}
     - target: {fileID: 4092362134281108231, guid: 80aaed688dc277c4da9dbd6d0242f482, type: 3}
       propertyPath: m_LocalPosition.y
