@@ -5947,12 +5947,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3551396644012251751, guid: 19db7d0110c9dc74e8917f8e3dcb8369, type: 3}
       propertyPath: components.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3551396644012251751, guid: 19db7d0110c9dc74e8917f8e3dcb8369, type: 3}
       propertyPath: components.Array.data[1]
       value: 
       objectReference: {fileID: 557964486}
+    - target: {fileID: 3551396644012251751, guid: 19db7d0110c9dc74e8917f8e3dcb8369, type: 3}
+      propertyPath: components.Array.data[2]
+      value: 
+      objectReference: {fileID: 1751476413}
     - target: {fileID: 7576847879603514365, guid: 19db7d0110c9dc74e8917f8e3dcb8369, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.6485748
@@ -13052,6 +13056,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1751476413 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5060222966462370018, guid: 19db7d0110c9dc74e8917f8e3dcb8369, type: 3}
+  m_PrefabInstance: {fileID: 894337462}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1752884847
 GameObject:
   m_ObjectHideFlags: 0

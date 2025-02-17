@@ -169,6 +169,10 @@ MonoBehaviour:
   startingHealth: 3
   iFrameDuration: 0
   numerOfFlashes: 0
+  components:
+  - {fileID: 8472507858872570777}
+  hurtSound: {fileID: 0}
+  dieSound: {fileID: 0}
 --- !u!114 &2056898274933938374
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -171,6 +171,9 @@ MonoBehaviour:
   numerOfFlashes: 0
   components:
   - {fileID: 8413029850810391593}
+  - {fileID: 5060222966462370018}
+  hurtSound: {fileID: 0}
+  dieSound: {fileID: 0}
 --- !u!114 &8413029850810391593
 MonoBehaviour:
   m_ObjectHideFlags: 0
