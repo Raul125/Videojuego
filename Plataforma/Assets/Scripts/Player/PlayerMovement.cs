@@ -3,7 +3,7 @@
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] private float speed = 4.0f;
+    public float Speed = 4.0f;
     [SerializeField] private float jumpForce = 7.5f;
     [SerializeField] private float rollForce = 6.0f;
     [SerializeField] private GameObject slideDust;
@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!Rolling && !(isWallSlidingLeft && inputX < 0) && !(isWallSlidingRight && inputX > 0))
         {
-            body2d.velocity = new Vector2(inputX * speed, body2d.velocity.y);
+            body2d.velocity = new Vector2(inputX * Speed, body2d.velocity.y);
         }
 
         animator.SetFloat("AirSpeedY", body2d.velocity.y);
@@ -170,16 +170,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetInteger("AnimState", 0);
             }
-        }
-    }
-
-    private void AE_SlideDust()
-    {
-        Vector3 spawnPosition = FacingDirection == 1 ? wallSensorR2.transform.position : wallSensorL2.transform.position;
-        if (slideDust != null)
-        {
-            GameObject dust = Instantiate(slideDust, spawnPosition, transform.localRotation);
-            dust.transform.localScale = new Vector3(FacingDirection, 1, 1);
         }
     }
 }

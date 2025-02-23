@@ -56,6 +56,7 @@ public class Health : MonoBehaviour
             {
                 SoundManager.Instance.PlaySound(hurtSound);
             }
+
             StartCoroutine(Invulnerability());
         }
         else if (!isDead)
@@ -72,6 +73,10 @@ public class Health : MonoBehaviour
             }
 
             isDead = true;
+            if (!gameObject.CompareTag("Player"))
+            {
+                ScoreManager.Instance.AddScore(1);
+            }
         }
     }
 
