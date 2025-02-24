@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2708205328249646558}
   - component: {fileID: 3062788796538399561}
   - component: {fileID: 5908622142153748084}
+  - component: {fileID: 4573264652703198774}
   m_Layer: 9
   m_Name: Spikehead
   m_TagString: Enemy
@@ -180,3 +181,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   impactSound: {fileID: 8300000, guid: 6e89f4c454d1a1049a0ab590e6f77621, type: 3}
+--- !u!95 &4573264652703198774
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641768780110882544}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e90fe8189958cac439e452f46b675b7c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
