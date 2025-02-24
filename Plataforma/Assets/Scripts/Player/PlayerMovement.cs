@@ -2,7 +2,6 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public float Speed = 4.0f;
     [SerializeField] private float jumpForce = 7.5f;
     [SerializeField] private float rollForce = 6.0f;
@@ -12,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject pet;
 
     private Animator animator;
-    private Animator petAnimator;
+    public Animator PetAnimator;
     private Rigidbody2D body2d;
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer petSpriteRenderer;
@@ -40,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        petAnimator = pet.GetComponent<Animator>();
+        PetAnimator = pet.GetComponent<Animator>();
         body2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         petSpriteRenderer = pet.GetComponent<SpriteRenderer>();
@@ -168,14 +167,14 @@ public class PlayerMovement : MonoBehaviour
         {
             delayToIdle = 0.05f;
             animator.SetInteger("AnimState", 1);
-            petAnimator.SetBool("Walking", true);
+            PetAnimator.SetBool("Walking", true);
         }
         else
         {
             delayToIdle -= Time.deltaTime;
             if (delayToIdle < 0)
             {
-                petAnimator.SetBool("Walking", false);
+                PetAnimator.SetBool("Walking", false);
                 animator.SetInteger("AnimState", 0);
             }
         }

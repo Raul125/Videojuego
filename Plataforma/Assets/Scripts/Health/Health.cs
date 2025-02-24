@@ -77,6 +77,10 @@ public class Health : MonoBehaviour
             {
                 ScoreManager.Instance.AddScore(1);
             }
+            else
+            {
+                gameObject.GetComponent<PlayerMovement>().PetAnimator.SetTrigger("Sit");
+            }
         }
     }
 
@@ -92,6 +96,10 @@ public class Health : MonoBehaviour
         animator.ResetTrigger("Death");
         animator.Play("Idle");
         StartCoroutine(Invulnerability());
+
+        Animator petAnimator = gameObject.GetComponent<PlayerMovement>().PetAnimator;
+        petAnimator.ResetTrigger("Sit");
+        petAnimator.Play("Idle");
 
         foreach (Behaviour component in components)
         {
