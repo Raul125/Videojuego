@@ -1,9 +1,17 @@
-https://www.youtube.com/watch?v=TcranVQUQ5U&list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&index=1
+---
+# Para poder acceder al siguiente nivel debes completar el anterior.
+---
+## Controles: 
+### Movimiento
+- Desplazarse: WASD
+- Salto: Espacio
+- Roll: Shift
 
-RESTA POR HACER:
+### Ataque
+- Atacar: Click Derecho
+- Escudo: Click Izquierdo
 
-- 3 NPCS MÁS
-  Sierras aceleran aleatoriamente cada determinados segundos, y suben y bajan un poco.
-  Añadir perro q te sigue
-
-- ACABAR 3 NIVELES
+### Menú
+- Flechas para desplazarte
+- Enter para seleccionar una opción
+- Tecla ESC para menú de pausa
