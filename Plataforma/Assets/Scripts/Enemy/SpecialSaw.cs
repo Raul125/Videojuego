@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpecialSaw : MonoBehaviour
@@ -7,9 +5,9 @@ public class SpecialSaw : MonoBehaviour
     [SerializeField] private float movementDistance = 5f;
     [SerializeField] private float minSpeed = 1f;
     [SerializeField] private float maxSpeed = 3f;
-    [SerializeField] private float verticalAmplitude = 1f;  // Máximo movimiento vertical
+    [SerializeField] private float verticalAmplitude = 1f;
     [SerializeField] private float damage = 10f;
-    [SerializeField] private float directionChangeInterval = 2f; // Tiempo para cambiar dirección
+    [SerializeField] private float directionChangeInterval = 2f;
 
     private float movementSpeed;
     private bool movingLeft;
@@ -17,7 +15,7 @@ public class SpecialSaw : MonoBehaviour
     private float rightEdge;
     private float baseY;
     private float directionChangeTimer;
-    private float minY, maxY; // Límites de movimiento vertical
+    private float minY, maxY;
 
     private void Awake()
     {
@@ -30,13 +28,12 @@ public class SpecialSaw : MonoBehaviour
         maxY = baseY + verticalAmplitude;
 
         movementSpeed = Random.Range(minSpeed, maxSpeed);
-        movingLeft = Random.value > 0.5f; // Decide aleatoriamente si empieza a la izquierda o derecha
+        movingLeft = Random.value > 0.5f;
         directionChangeTimer = directionChangeInterval;
     }
 
     private void Update()
     {
-        // Movimiento horizontal
         if (movingLeft)
         {
             if (transform.position.x > leftEdge)
@@ -60,12 +57,10 @@ public class SpecialSaw : MonoBehaviour
             }
         }
 
-        // Movimiento vertical con límite
         float newY = transform.position.y + Mathf.Sin(Time.time * movementSpeed) * Time.deltaTime;
-        newY = Mathf.Clamp(newY, minY, maxY); // Limita la posición Y
+        newY = Mathf.Clamp(newY, minY, maxY);
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
 
-        // Cambio aleatorio de dirección y velocidad
         directionChangeTimer -= Time.deltaTime;
         if (directionChangeTimer <= 0)
         {
@@ -77,7 +72,8 @@ public class SpecialSaw : MonoBehaviour
 
     private void ChangeDirection()
     {
-        if (Random.value > 0.5f) movingLeft = !movingLeft; // 50% de probabilidad de invertir dirección horizontal
+        if (Random.value > 0.5f)
+            movingLeft = !movingLeft;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
