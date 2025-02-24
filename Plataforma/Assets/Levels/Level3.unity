@@ -5503,6 +5503,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 4155907941472199968, guid: aca0d71d44ec88a4ca8199bec31ba986, type: 3}
+      propertyPath: m_Size.y
+      value: 3.017323
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155907941472199968, guid: aca0d71d44ec88a4ca8199bec31ba986, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0778501
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733028651505246347, guid: aca0d71d44ec88a4ca8199bec31ba986, type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733028651505246347, guid: aca0d71d44ec88a4ca8199bec31ba986, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6139233430310647072, guid: aca0d71d44ec88a4ca8199bec31ba986, type: 3}
       propertyPath: nextRoom
       value: 
@@ -5555,8 +5571,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4733028651505246347, guid: aca0d71d44ec88a4ca8199bec31ba986, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
