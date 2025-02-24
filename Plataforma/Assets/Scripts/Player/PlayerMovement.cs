@@ -9,10 +9,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject slideDust;
     [SerializeField] private GameObject shield;
     [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private GameObject pet;
 
     private Animator animator;
+    private Animator petAnimator;
     private Rigidbody2D body2d;
     private SpriteRenderer spriteRenderer;
+    private SpriteRenderer petSpriteRenderer;
     private PlayerAttack playerAttack;
     private BoxCollider2D boxCollider;
 
@@ -37,8 +40,10 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        petAnimator = pet.GetComponent<Animator>();
         body2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        petSpriteRenderer = pet.GetComponent<SpriteRenderer>();
         playerAttack = GetComponent<PlayerAttack>();
         boxCollider = GetComponent<BoxCollider2D>();
 
@@ -98,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
         if (inputX != 0)
         {
             spriteRenderer.flipX = inputX < 0;
+            petSpriteRenderer.flipX = inputX < 0;
             FacingDirection = inputX < 0 ? -1 : 1;
 
             Vector3 shieldOffset = shield.transform.localPosition;
@@ -162,12 +168,14 @@ public class PlayerMovement : MonoBehaviour
         {
             delayToIdle = 0.05f;
             animator.SetInteger("AnimState", 1);
+            petAnimator.SetBool("Walking", true);
         }
         else
         {
             delayToIdle -= Time.deltaTime;
             if (delayToIdle < 0)
             {
+                petAnimator.SetBool("Walking", false);
                 animator.SetInteger("AnimState", 0);
             }
         }
