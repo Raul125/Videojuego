@@ -8,8 +8,8 @@
 - Roll: Shift
 
 ### Ataque
-- Atacar: Click Derecho
-- Escudo: Click Izquierdo
+- Escudo: Click Derecho
+- Atacar: Click Izquierdo
 
 ### Menú
 - Flechas para desplazarte
