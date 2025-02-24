@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private CollideSensor wallSensorL1;
     private CollideSensor wallSensorL2;
 
-    private bool isWallSliding = false;
+    public bool IsWallSliding = false;
     private bool isWallSlidingLeft;
     private bool isWallSlidingRight;
     private bool grounded = false;
@@ -122,8 +122,8 @@ public class PlayerMovement : MonoBehaviour
     {
         isWallSlidingLeft = wallSensorL1.State() || wallSensorL2.State();
         isWallSlidingRight = wallSensorR1.State() || wallSensorR2.State();
-        isWallSliding = isWallSlidingLeft || isWallSlidingRight;
-        animator.SetBool("WallSlide", isWallSliding);
+        IsWallSliding = isWallSlidingLeft || isWallSlidingRight;
+        animator.SetBool("WallSlide", IsWallSliding);
     }
 
     private void HandleInputs()
@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
-        else if (Input.GetButtonDown("Fire3") && !Rolling && !isWallSliding)
+        else if (Input.GetButtonDown("Fire3") && !Rolling && !IsWallSliding)
         {
             StartRolling();
         }

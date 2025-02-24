@@ -32,14 +32,6 @@ public class Health : MonoBehaviour
         currentHealth = startingHealth;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            TakeDamage(1);
-        }
-    }
-
     public void TakeDamage(float damage)
     {
         if (invulnerable)
@@ -93,9 +85,12 @@ public class Health : MonoBehaviour
     {
         isDead = false;
         Heal(startingHealth);
+        var playerMovement = gameObject.GetComponent<PlayerMovement>();
+        playerMovement.IsWallSliding = false;
         animator.SetBool("WallSlide", false);
         animator.ResetTrigger("Death");
         animator.Play("Idle");
+
         StartCoroutine(Invulnerability());
 
         var playerAttack = gameObject.GetComponent<PlayerAttack>();
