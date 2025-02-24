@@ -101,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void StopBlocking()
+    public void StopBlocking()
     {
         animator.SetBool("IdleBlock", false);
         Blocking = false;

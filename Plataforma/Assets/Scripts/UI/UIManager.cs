@@ -59,6 +59,7 @@ public class UIManager : MonoBehaviour
         }
 
         SceneManager.LoadScene(level);
+        Time.timeScale = 1;
     }
 
     public void Quit()

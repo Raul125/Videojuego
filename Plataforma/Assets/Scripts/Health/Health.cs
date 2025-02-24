@@ -93,9 +93,16 @@ public class Health : MonoBehaviour
     {
         isDead = false;
         Heal(startingHealth);
+        animator.SetBool("WallSlide", false);
         animator.ResetTrigger("Death");
         animator.Play("Idle");
         StartCoroutine(Invulnerability());
+
+        var playerAttack = gameObject.GetComponent<PlayerAttack>();
+        if (playerAttack.Blocking)
+        {
+            playerAttack.StopBlocking();
+        }
 
         Animator petAnimator = gameObject.GetComponent<PlayerMovement>().PetAnimator;
         petAnimator.ResetTrigger("Sit");
