@@ -93,6 +93,14 @@ public class PlayerAttack : MonoBehaviour
         SoundManager.Instance.PlaySound(blockSound);
     }
 
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus && Blocking)
+        {
+            StopBlocking();
+        }
+    }
+
     private void StopBlocking()
     {
         animator.SetBool("IdleBlock", false);
