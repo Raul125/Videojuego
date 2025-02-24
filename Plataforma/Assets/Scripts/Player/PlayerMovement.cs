@@ -120,8 +120,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleWallSliding()
     {
-        isWallSlidingLeft = wallSensorL1.State() || wallSensorL2.State();
-        isWallSlidingRight = wallSensorR1.State() || wallSensorR2.State();
+        isWallSlidingLeft = wallSensorL1.State() && wallSensorL2.State();
+        isWallSlidingRight = wallSensorR1.State() && wallSensorR2.State();
         IsWallSliding = isWallSlidingLeft || isWallSlidingRight;
         animator.SetBool("WallSlide", IsWallSliding);
     }
